@@ -955,7 +955,10 @@ function getMaxRaw(dimIdx){
 function getDimHealth(dimIdx){
   const raw = getDimRaw(dimIdx);
   const maxR = getMaxRaw(dimIdx);
-  return maxR - raw; // 0-12 range, higher = healthier
+  const minR = DIMENSIONS[dimIdx].questions.length; // min possible raw score (all 1s)
+  // Clamp: health = maxR - raw, but raw can't be below minR
+  const clampedRaw = Math.max(raw, minR);
+  return maxR - clampedRaw; // 0-12 range, higher = healthier
 }
 
 function getTotalHealth(){
