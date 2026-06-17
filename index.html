@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-<title>财商心智 · 财商心理体检 | 花花子</title>
+<title>财商心智 · 财商心智体检 | 花花</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 /* ═══ RESET & BASE ═══ */
 :root{
@@ -607,15 +605,15 @@ body::after{
       <div class="topbar-left">
         <div class="topbar-brand">财商<span>心智</span></div>
       </div>
-      <div class="topbar-sub"><span class="dot"></span>花花子 · 财商心理</div>
+      <div class="topbar-sub"><span class="dot"></span>花花 · 财商心智教练</div>
     </div>
   </div>
   <div class="main">
     <div class="main-inner page-in">
-      <div class="hero-tag"><span class="leaf">🌿</span> 财商心理体检 · 20道认知题</div>
+      <div class="hero-tag"><span class="leaf">🌿</span> 财商心智体检 · 20道认知题</div>
       <h1 class="hero-title">为什么收入翻倍了，<br>财富却没有增长？<br>问题出在 <span class="highlight">你的财富操作系统</span></h1>
       <p class="hero-sub">财商的本质，不是赚钱能力，而是管理欲望、时间、风险和复利的能力。很多人研究十年投资，最后输给了情绪。很多人收入翻倍，财富却没有增长——<strong>赚钱是技术问题，留住钱是心理问题。</strong></p>
-      <p class="hero-byline">—— 花花子 · 财商心理教练</p>
+      <p class="hero-byline">—— 花花 · 财商心智教练</p>
 
       <div class="warm-card">
         <ul class="list">
@@ -655,7 +653,7 @@ body::after{
       </div>
     </div>
   </div>
-  <div class="footer">财商心智 V1.1 · 花花子的财富操作系统 · 花花子</div>
+  <div class="footer">财商心智 V1.1 · 花花的财富操作系统 · 花花</div>
 </div>
 
 <!-- ═════════════ QUIZ PAGES ═════════════ -->
@@ -702,7 +700,7 @@ body::after{
       <div id="resultContent"></div>
     </div>
   </div>
-  <div class="footer">财商心智 V1.1 · 行为金融学 × 财商心理 · 花花子</div>
+  <div class="footer">财商心智 V1.1 · 行为经济学 × 财商心智 · 有钱花</div>
 </div>
 
 <script>
@@ -1221,18 +1219,18 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
     </div>
 
     <div class="result-actions">
-      <button class="btn-primary" onclick="saveAsPDF()">📄 保存PDF</button>
-      <button class="btn-secondary" onclick="restart()">重新体检</button>
-    </div>
+          <button class="btn-primary" onclick="saveResult()">📄 保存结果</button>
+          <button class="btn-secondary" onclick="restart()">重新体检</button>
+        </div>
 
     <!-- ═══ 解锁深度报告 ═══ -->
     <div class="unlock-section" id="unlockSection">
       <div class="unlock-card" id="unlockCard">
         <h4>🔒 解锁深度解读报告</h4>
-        <p>以上是测评的简要结果。想知道每个维度的深层原因、以及针对你个人情况的<strong>定制化改善方案</strong>？<br><br>
-        加花花子微信，发送验证码即可获取完整版深度解读报告。</p>
+        <p>以上是测评的简要结果（分数+维度+核心洞察）。想知道<strong>你的优势在哪、需要改善什么、以及针对你的三条定制行动建议</strong>？<br><br>
+        加花花微信，发送验证码即可获取完整版深度解读报告。</p>
         <div style="margin-bottom:16px;padding:14px;background:rgba(199,125,74,0.12);border-radius:12px">
-          <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-bottom:4px">📱 花花子微信号</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-bottom:4px">📱 花花微信号</div>
           <div style="font-size:1.1rem;font-weight:700;color:var(--terracotta);letter-spacing:.05em">Hgh94fafa</div>
         </div>
         <div style="font-size:.8rem;color:rgba(255,255,255,.8);margin-bottom:12px">添加后发送验证码解锁深度报告</div>
@@ -1240,14 +1238,14 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
           <input type="text" id="codeInput" placeholder="输入验证码" maxlength="10" autocomplete="off">
           <button class="btn-gold" onclick="verifyCode()">解锁 →</button>
         </div>
-        <div id="codeError" class="unlock-error">验证码错误，请重试。提示：联系花花子获取验证码。</div>
+        <div id="codeError" class="unlock-error">验证码错误，请重试。提示：联系花花获取验证码。</div>
       </div>
     </div>
 
-    <!-- ═══ 花花子的服务产品 ═══ -->
+    <!-- ═══ 花花的服务产品 ═══ -->
     <div class="service-section">
-      <h3>💎 花花子的财商服务</h3>
-      <p style="font-size:.82rem;color:var(--warm-gray);margin-bottom:16px">这份体检只是起点。真正的问题不是"你哪里做得不好"，而是"接下来怎么做"。花花子为你准备了三个层次的服务——<strong>从诊断问题，到止痛，到治本</strong>。</p>
+      <h3>💎 花花的财商服务</h3>
+      <p style="font-size:.82rem;color:var(--warm-gray);margin-bottom:16px">这份体检只是起点。真正的问题不是"你哪里做得不好"，而是"接下来怎么做"。花花为你准备了三个层次的服务——<strong>从诊断问题，到止痛，到治本</strong>。</p>
 
       <!-- 1v1 咨询 499/h -->
       <div class="service-card">
@@ -1256,7 +1254,7 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
         <div class="svc-price">¥499 <span>/ 小时</span></div>
         <div class="svc-desc">
           <span class="pain">你拿到了测评结果，知道了自己哪个维度得分低——</span>但<strong>知道问题不等于知道怎么解决</strong>。
-          1v1咨询不是讲课，是<strong>诊断</strong>。花花子带你逐项拆解你的财富卡点，找到问题的<strong>根本原因</strong>。
+          1v1咨询不是讲课，是<strong>诊断</strong>。花花带你逐项拆解你的财富卡点，找到问题的<strong>根本原因</strong>。
         </div>
         <div class="svc-hook">
           📌 <strong>适合谁：</strong>测评完想知道"我到底卡在哪"的人。<br>
@@ -1275,7 +1273,7 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
         </div>
         <div class="svc-hook">
           📌 <strong>参照系：</strong>开面馆15万一年半回本，教练营¥5,000一个月见效——哪个更划算？<br>
-          🔥 <strong>钩子：</strong>你不是能力不够，是缺一个系统。一个月，让你的财富习惯拐个弯。
+          🔥 <strong>钩子：</strong>你不是能力不够，是缺一个好的财商模式。一个月，让你的财富习惯拐个弯。
         </div>
       </div>
 
@@ -1287,7 +1285,7 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
         <div class="svc-desc">
           <span class="pain">你试过很多方法——听了很多课、看了很多书——但三个月后又回到老样子。</span>
           <strong>因为改变财务行为，不是"知道了就行"，是需要有人长期伴跑。</strong>
-          年度教练 = 月度全部权益 + 全年投资策略陪跑 + 个性化的资产配置方案 + 花花子随时在线的智囊团。
+          年度教练 = 月度全部权益 + 全年投资策略陪跑 + 个性化的资产配置方案 + 花花随时在线的智囊团。
           <strong>不是你一个人在战斗，是一个教练+一个系统+十二个月的持续陪伴。</strong>
         </div>
         <div class="svc-hook">
@@ -1296,10 +1294,10 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
         </div>
       </div>
 
-      <!-- 联系花花子 -->
+      <!-- 联系花花 -->
       <div class="contact-card">
-        <h4>🌸 扫码添加花花子</h4>
-        <p>扫码加我微信，备注「财商体检」<br>免费领取你的专属改善建议</p>
+        <h4>🌸 扫码添加花花</h4>
+        <p>扫码加我微信，备注「财商心智」<br>免费领取你的专属财商建议</p>
         <div class="wechat-box">
           <div class="label">📱 微信号</div>
           <div class="id">Hgh94fafa</div>
@@ -1321,58 +1319,135 @@ function restart(){
   checkPrevResult();
 }
 
-// ═══════════════ PDF SAVE ═══════════════
-function saveAsPDF(){
-  const btn = event && event.target ? event.target : document.querySelector('#resultContent .btn-primary');
-  if(btn){
-    btn.textContent = '⏳ 生成中…';
-    btn.disabled = true;
+// ═══════════════ SAVE RESULT (Canvas) ═══════════════
+function saveResult(){
+  try {
+    const btn = event && event.target ? event.target : document.querySelector('#resultContent .btn-primary');
+    if(btn){ btn.textContent = '⏳ 生成中…'; btn.disabled = true; }
+
+    const totalScore = getTotalScore();
+    const type = getType();
+    const sev = getSeverity(totalScore);
+    const width = 800;
+    const height = 850;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#FBF7F0';
+    ctx.fillRect(0, 0, width, height);
+
+    // Decorative top
+    ctx.fillStyle = '#1B3A2D';
+    ctx.fillRect(0, 0, width, 12);
+
+    // Title
+    ctx.fillStyle = '#1B3A2D';
+    ctx.font = 'bold 36px "Playfair Display", serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('财商心智体检报告', width/2, 70);
+
+    // Divider
+    ctx.strokeStyle = '#C77D4A';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(80, 90);
+    ctx.lineTo(width-80, 90);
+    ctx.stroke();
+
+    // Score
+    ctx.fillStyle = type.emoji === '🟢' ? '#4A9E6B' : (totalScore >= 50 ? '#D4A35A' : '#C96050');
+    ctx.font = 'bold 56px "Playfair Display", serif';
+    ctx.fillText(totalScore + '/100', width/2, 150);
+    ctx.font = '18px "Noto Sans SC", sans-serif';
+    ctx.fillStyle = '#7A7A8A';
+    ctx.fillText(sev.label, width/2, 180);
+
+    // Type
+    ctx.fillStyle = '#C77D4A';
+    ctx.font = 'bold 20px "Noto Sans SC", sans-serif';
+    ctx.fillText(type.emoji + ' ' + type.name, width/2, 215);
+
+    // Diagnosis
+    ctx.fillStyle = '#2B2D42';
+    ctx.font = '15px "Noto Sans SC", sans-serif';
+    const dx = 60, dw = width - 120;
+    wrapText(ctx, type.diagnosis, dx, 255, dw, 24);
+
+    // Dimensions
+    const dims = DIMENSIONS.map((d,i) => ({name: DIM_INFO[i].icon + ' ' + DIM_INFO[i].name, health: getDimHealth(i), max: 12}));
+    let yPos = 310;
+    ctx.font = 'bold 16px "Noto Sans SC", sans-serif';
+    ctx.fillStyle = '#1B3A2D';
+    ctx.fillText('五维扫描', dx, yPos);
+    yPos += 20;
+
+    dims.forEach(d => {
+      const pct = Math.round(d.health/d.max*100);
+      const barColor = pct >= 75 ? '#4A9E6B' : (pct >= 50 ? '#D4A35A' : '#C96050');
+      ctx.font = '14px "Noto Sans SC", sans-serif';
+      ctx.fillStyle = '#2B2D42';
+      ctx.fillText(d.name, dx, yPos+5);
+      ctx.fillStyle = '#7A7A8A';
+      ctx.font = '13px "Noto Sans SC", sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(d.health + '/' + d.max, dx + dw, yPos+5);
+      ctx.textAlign = 'left';
+      // Bar bg
+      ctx.fillStyle = '#E5D9C8';
+      ctx.fillRect(dx, yPos+12, dw-40, 8);
+      // Bar fill
+      ctx.fillStyle = barColor;
+      ctx.fillRect(dx, yPos+12, (dw-40)*d.health/d.max, 8);
+      yPos += 32;
+    });
+
+    // Footer
+    yPos = Math.max(yPos + 40, canvas.height - 60);
+    ctx.strokeStyle = '#E5D9C8';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(80, yPos);
+    ctx.lineTo(width-80, yPos);
+    ctx.stroke();
+    ctx.fillStyle = '#7A7A8A';
+    ctx.font = '12px "Noto Sans SC", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('财商心智 V1.1 · 花花 · 财商心智教练', width/2, yPos+25);
+
+    // Download
+    const link = document.createElement('a');
+    link.download = '财商心智_体检报告.png';
+    link.href = canvas.toDataURL('image/png');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    if(btn){ btn.textContent = '📄 保存结果'; btn.disabled = false; }
+  } catch(e){
+    alert('保存失败，请截图保存。错误：' + e.message);
+    const btn2 = document.querySelector('#resultContent .btn-primary');
+    if(btn2){ btn2.textContent = '📄 保存结果'; btn2.disabled = false; }
   }
+}
 
-  const resultContent = document.getElementById('resultContent');
-
-  // Use html2canvas to capture the result area
-  html2canvas(resultContent, {
-    scale: 2,
-    useCORS: true,
-    backgroundColor: '#FBF7F0',
-    logging: false,
-    windowHeight: resultContent.scrollHeight
-  }).then(canvas => {
-    const imgData = canvas.toDataURL('image/png');
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-    const imgWidth = pdfWidth;
-    const imgHeight = (canvas.height * pdfWidth) / canvas.width;
-
-    let heightLeft = imgHeight;
-    let position = 0;
-
-    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-    heightLeft -= pdfHeight;
-
-    while(heightLeft > 0){
-      position = heightLeft - imgHeight;
-      pdf.addPage();
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pdfHeight;
+function wrapText(ctx, text, x, y, maxWidth, lineHeight){
+  const chars = text.split('');
+  let line = '';
+  let ty = y;
+  for(let c of chars){
+    const test = line + c;
+    if(ctx.measureText(test).width > maxWidth && line){
+      ctx.fillText(line, x, ty);
+      line = c;
+      ty += lineHeight;
+    } else {
+      line = test;
     }
-
-    pdf.save('财商心智_体检报告.pdf');
-
-    if(btn){
-      btn.textContent = '📄 保存PDF';
-      btn.disabled = false;
-    }
-  }).catch(err => {
-    alert('生成PDF失败，请尝试截图保存。错误：' + err.message);
-    if(btn){
-      btn.textContent = '📄 保存PDF';
-      btn.disabled = false;
-    }
-  });
+  }
+  ctx.fillText(line, x, ty);
 }
 
 // ═══════════════ VERIFICATION CODE ═══════════════
@@ -1402,20 +1477,44 @@ function showDeepReport(){
   const totalScore = getTotalScore();
   const type = getType();
 
+  // Recompute strengths/weaknesses from current data
+  const healthScores = DIMENSIONS.map((_,i)=>getDimHealth(i));
+  const sortedDims = healthScores.map((h,i)=>({idx:i, health:h})).sort((a,b)=>a.health-b.health);
+  const strengths = sortedDims.slice(-2).reverse();
+  const weaknesses = sortedDims.slice(0,2);
+
+  let actionsHtml = '';
+  type.actions.forEach(a=>{ actionsHtml += `<li style="padding:6px 0 6px 20px;position:relative;font-size:.84rem;line-height:1.6">→ ${a}</li>`; });
+
   unlockCard.innerHTML = `
     <h4 style="color:#8CB369">✅ 深度报告已解锁</h4>
-    <p style="margin-bottom:16px">感谢你的信任！以下是针对你个人情况的深度解读——</p>
+    <p style="margin-bottom:16px">感谢你的信任！以下是针对你个人情况的完整深度解读——</p>
     <div style="text-align:left;background:rgba(255,255,255,0.08);border-radius:12px;padding:20px;margin-bottom:16px">
       <div style="font-size:.9rem;font-weight:600;color:var(--terracotta);margin-bottom:12px">📌 你的核心问题诊断</div>
-      <p style="font-size:.84rem;line-height:1.8;margin-bottom:12px">${type.core}</p>
+      <p style="font-size:.84rem;line-height:1.8;margin-bottom:16px">${type.core}</p>
+
+      <div style="font-size:.9rem;font-weight:600;color:var(--success);margin-bottom:12px">✅ 你做得好的</div>
+      ${strengths.map(d=>`<div style="font-size:.84rem;color:rgba(255,255,255,.85);margin-bottom:6px;padding-left:12px">${DIM_INFO[d.idx].icon} ${DIM_INFO[d.idx].name}</div>`).join('')}
+      <div style="height:12px"></div>
+
+      <div style="font-size:.9rem;font-weight:600;color:var(--danger);margin-bottom:12px">⚠️ 需要改善的</div>
+      ${weaknesses.map(d=>`<div style="font-size:.84rem;color:rgba(255,255,255,.85);margin-bottom:2px;padding-left:12px">${DIM_INFO[d.idx].icon} ${DIM_INFO[d.idx].name} — ${DIM_INFO[d.idx].desc}</div>`).join('')}
+      <div style="height:12px"></div>
+
       <div style="font-size:.9rem;font-weight:600;color:var(--terracotta);margin-bottom:12px">⚠️ 需要警惕的</div>
-      <p style="font-size:.84rem;line-height:1.8;margin-bottom:12px">${type.weakness}</p>
-      <div style="font-size:.9rem;font-weight:600;color:var(--terracotta);margin-bottom:12px">💡 花花子给你的建议</div>
+      <p style="font-size:.84rem;line-height:1.8;margin-bottom:16px">${type.weakness}</p>
+
+      <div style="font-size:.9rem;font-weight:600;color:var(--sage);margin-bottom:12px">🎯 三条行动建议</div>
+      <ul style="list-style:none;padding:0;margin-bottom:16px">
+        ${actionsHtml}
+      </ul>
+
+      <div style="font-size:.9rem;font-weight:600;color:var(--terracotta);margin-bottom:12px">💡 花花给你的建议</div>
       <ul style="list-style:none;padding:0">
         ${type.actions.map(a => `<li style="padding:6px 0 6px 20px;position:relative;font-size:.84rem;line-height:1.6">→ ${a}</li>`).join('')}
       </ul>
     </div>
-    <p style="font-size:.8rem;opacity:.8">以上是针对你真实情况的深度解读。如果你想要更具体、更个性化的改善方案，<br>继续往下看——花花子为你准备了三个层次的服务👇</p>
+    <p style="font-size:.8rem;opacity:.8">以上是你完整的深度解读报告。如果你想要更具体、更个性化的改善方案，<br>继续往下看——花花为你准备了三个层次的服务👇</p>
   `;
 }
 
