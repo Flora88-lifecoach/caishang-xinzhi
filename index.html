@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2" async></script>
 <style>
 /* ═══ RESET & BASE ═══ */
 :root{
@@ -781,7 +781,11 @@ const LABELS = ['不是我', '偶尔是', '经常是', '总是如此'];
 // ═══════════════ SUPABASE ═══════════════
 const SUPABASE_URL = 'https://odfcfqfpbifagdomdckn.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9kZmNmcWZwYmlmYWdkb21kY2tuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NDAwODQsImV4cCI6MjA5NjIxNjA4NH0.HVzHj1edI4FLH4PJXmSUU52CiNjKOQDa7lNrpHP8bH4';
-const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+function getSupabase() {
+  // 按需初始化，兼容异步加载
+  return window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+}
 
 // ═══════════════ STATE ═══════════════
 let answers = {};
@@ -1485,7 +1489,9 @@ function saveToSupabase(totalScore, type, dimHealth, saveData){
     answers_json: JSON.stringify(saveData.answers || {}),
     feedback_text: ''
   };
-  supabase.from('caishang_xinzhirecords').insert([record]).then(({error}) => {
+  const sb = getSupabase();
+  if(!sb) return;
+  sb.from('caishang_xinzhirecords').insert([record]).then(({error}) => {
     if(error) console.log('Supabase save error:', error.message);
   });
 }
@@ -1506,11 +1512,12 @@ function submitFeedback(){
     localStorage.setItem('caishang_feedback', JSON.stringify(fb));
   } catch(e) {}
   // Save to Supabase
-  if(supabase){
+  const sb = getSupabase();
+  if(sb){
     const totalScore = getTotalScore();
     const type = getType();
     const dimHealth = DIMENSIONS.map((_,i)=>getDimHealth(i));
-    supabase.from('caishang_xinzhirecords').insert([{
+    sb.from('caishang_xinzhirecords').insert([{
       created_at: new Date().toISOString(),
       total_score: totalScore,
       type_name: type.name,
