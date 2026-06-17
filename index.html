@@ -614,7 +614,6 @@ body::after{
       <div class="hero-tag"><span class="leaf">🌿</span> 财商心智体检 · 20道认知题</div>
       <h1 class="hero-title">为什么收入翻倍了，<br>财富却没有增长？<br>问题出在 <span class="highlight">你的财富操作系统</span></h1>
       <p class="hero-sub">财商的本质，不是赚钱能力，而是管理欲望、时间、风险和复利的能力。很多人研究十年投资，最后输给了情绪。很多人收入翻倍，财富却没有增长——<strong>赚钱是技术问题，留住钱是心理问题。</strong></p>
-      <p class="hero-byline">—— 花花 · 财商心智教练</p>
 
       <div class="warm-card">
         <ul class="list">
@@ -654,7 +653,7 @@ body::after{
       </div>
     </div>
   </div>
-  <div class="footer">财商心智 V1.1 · 花花的财富操作系统 · 花花</div>
+  <div class="footer">财商心智 V1.1 · 财富操作系统 · 花花</div>
 </div>
 
 <!-- ═════════════ QUIZ PAGES ═════════════ -->
@@ -1205,26 +1204,6 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
       ${scoreCards}
     </div>
 
-    <div class="dim-section">
-      <h3>✅ 你的优势 & ⚠️ 需要改善的</h3>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
-        <div style="background:rgba(74,158,107,0.08);border-radius:var(--radius-sm);padding:14px 18px;border-left:3px solid var(--success)">
-          <div style="font-size:.8rem;font-weight:600;color:var(--success);margin-bottom:4px">✅ 你做得好的</div>
-          ${strengths.map(d=>`<div style="font-size:.82rem;color:var(--charcoal);margin-bottom:2px">${DIM_INFO[d.idx].icon} ${DIM_INFO[d.idx].name}</div>`).join('')}
-        </div>
-        <div style="background:rgba(201,96,80,0.08);border-radius:var(--radius-sm);padding:14px 18px;border-left:3px solid var(--danger)">
-          <div style="font-size:.8rem;font-weight:600;color:var(--danger);margin-bottom:4px">⚠️ 需要改善的</div>
-          ${weaknesses.map(d=>`<div style="font-size:.82rem;color:var(--charcoal);margin-bottom:2px">${DIM_INFO[d.idx].icon} ${DIM_INFO[d.idx].name} — ${DIM_INFO[d.idx].desc}</div>`).join('')}
-        </div>
-      </div>
-    </div>
-
-    <div class="action-section">
-      <h3>🎯 三条行动建议</h3>
-      <div class="hint">选1条开始执行，坚持21天再换下一条。</div>
-      <ul class="action-list">${actionsHtml}</ul>
-    </div>
-
     <div class="deep-box">
       <h4>✦ 核心洞察</h4>
       <p>${type.insight}</p>
@@ -1270,7 +1249,7 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
         </div>
         <div class="svc-hook">
           📌 <strong>适合谁：</strong>测评完想知道"我到底卡在哪"的人。<br>
-          🔥 <strong>钩子：</strong>一次咨询，帮你把财富诊断从"哪里有问题"升级为"问题从哪来"。
+          🔥 <strong>价值：</strong>一次咨询，帮你把财富诊断从"哪里有问题"升级为"问题从哪来"。
         </div>
       </div>
 
@@ -1284,8 +1263,8 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
           月度教练营 = 每周1次1v1深度辅导 + 实时答疑 + 定制化改善计划。<strong>30天，帮你把薄弱维度的分数提上去，把那些让你痛苦的财务习惯改掉。</strong>
         </div>
         <div class="svc-hook">
-          📌 <strong>参照系：</strong>开面馆15万一年半回本，教练营¥5,000一个月见效——哪个更划算？<br>
-          🔥 <strong>钩子：</strong>你不是能力不够，是缺一个好的财商模式。一个月，让你的财富习惯拐个弯。
+          📌 <strong>为何你需要：</strong>开面馆15万一年半回本，教练营¥5,000一个月见效——哪个更划算？<br>
+          🔥 <strong>价值：</strong>你不是能力不够，是缺一个好的财商模式。一个月，让你的财富习惯拐个弯。
         </div>
       </div>
 
@@ -1301,8 +1280,8 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
           <strong>不是你一个人在战斗，是一个教练+一个系统+十二个月的持续陪伴。</strong>
         </div>
         <div class="svc-hook">
-          📌 <strong>参照系：</strong>上大学30万8年回本，财商教练¥19,800一年回本——哪个终身受益？<br>
-          🔥 <strong>钩子：</strong>你不是学不会理财，你只是缺一个陪你走完全程的人。一年后，你会感谢今天这个决定。
+          📌 <strong>为何你需要：</strong>上大学30万8年回本，财商教练¥19,800一年回本——哪个终身受益？<br>
+          🔥 <strong>价值：</strong>你不是学不会理财，你只是缺一个陪你走完全程的人。一年后，你会感谢今天这个决定。
         </div>
       </div>
 
