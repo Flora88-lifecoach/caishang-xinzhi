@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <style>
 /* ═══ RESET & BASE ═══ */
 :root{
@@ -777,6 +778,11 @@ const DIMENSIONS = [
 
 const LABELS = ['不是我', '偶尔是', '经常是', '总是如此'];
 
+// ═══════════════ SUPABASE ═══════════════
+const SUPABASE_URL = 'https://odfcfqfpbifagdomdckn.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9kZmNmcWZwYmlmYWdkb21kY2tuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NDAwODQsImV4cCI6MjA5NjIxNjA4NH0.HVzHj1edI4FLH4PJXmSUU52CiNjKOQDa7lNrpHP8bH4';
+const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
 // ═══════════════ STATE ═══════════════
 let answers = {};
 let currentDim = 0;
@@ -1140,6 +1146,8 @@ function renderResult(){
   try {
     localStorage.setItem('caishang_result_v2', JSON.stringify(saveData));
   } catch(e) {}
+  // Save to Supabase
+  saveToSupabase(totalScore, type, dimHealth, saveData);
 
   buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesses);
 }
@@ -1302,7 +1310,18 @@ function buildResultHTML(totalScore, type, sev, scoreCards, strengths, weaknesse
           <div class="label">📱 微信号</div>
           <div class="id">Hgh94fafa</div>
         </div>
-        <div class="note">加微信时备注「财商体检」，花花会尽快通过 🙌</div>
+        <div class="note">加微信时备注「财商心智」，花花会尽快通过 🙌</div>
+      </div>
+
+      <!-- ═══ 反馈建议 ═══ -->
+      <div class="warm-card" style="margin-top:24px">
+        <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--green-dark);margin-bottom:10px">💬 反馈建议</h4>
+        <p style="font-size:.82rem;color:var(--warm-gray);margin-bottom:12px;line-height:1.6">这个产品正在持续优化中。你的每一条反馈，都是花花迭代产品的重要参考 🙏</p>
+        <textarea id="feedbackInput" placeholder="说说你的感受、建议、或者遇到的问题..." style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:12px;font-size:.85rem;font-family:inherit;background:var(--cream-card);color:var(--charcoal);resize:vertical;min-height:80px;outline:none;transition:var(--transition)" onfocus="this.style.borderColor='var(--terracotta)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+        <div style="display:flex;gap:12px;margin-top:10px;align-items:center">
+          <button class="btn-primary" onclick="submitFeedback()" style="padding:10px 24px;font-size:.82rem;width:auto">提交反馈</button>
+          <span id="feedbackStatus" style="font-size:.78rem;color:var(--warm-gray)"></span>
+        </div>
       </div>
     </div>
   `;
@@ -1448,6 +1467,68 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight){
     }
   }
   ctx.fillText(line, x, ty);
+}
+
+// ═══════════════ SUPABASE SAVE ═══════════════
+function saveToSupabase(totalScore, type, dimHealth, saveData){
+  if(!supabase) return;
+  const record = {
+    created_at: new Date().toISOString(),
+    total_score: totalScore,
+    type_name: type.name,
+    type_tag: type.tag,
+    dim_perception: dimHealth[0] || 0,
+    dim_goal: dimHealth[1] || 0,
+    dim_create: dimHealth[2] || 0,
+    dim_decision: dimHealth[3] || 0,
+    dim_manage: dimHealth[4] || 0,
+    answers_json: JSON.stringify(saveData.answers || {}),
+    feedback_text: ''
+  };
+  supabase.from('caishang_xinzhi_records').insert([record]).then(({error}) => {
+    if(error) console.log('Supabase save error:', error.message);
+  });
+}
+
+// ═══════════════ FEEDBACK ═══════════════
+function submitFeedback(){
+  const textarea = document.getElementById('feedbackInput');
+  const status = document.getElementById('feedbackStatus');
+  const text = textarea ? textarea.value.trim() : '';
+  if(!text){
+    if(status) status.textContent = '请填写反馈内容再提交 🙏';
+    return;
+  }
+  // Save to localStorage as backup
+  try {
+    const fb = JSON.parse(localStorage.getItem('caishang_feedback') || '[]');
+    fb.push({text: text, time: new Date().toISOString()});
+    localStorage.setItem('caishang_feedback', JSON.stringify(fb));
+  } catch(e) {}
+  // Save to Supabase
+  if(supabase){
+    const totalScore = getTotalScore();
+    const type = getType();
+    const dimHealth = DIMENSIONS.map((_,i)=>getDimHealth(i));
+    supabase.from('caishang_xinzhi_records').insert([{
+      created_at: new Date().toISOString(),
+      total_score: totalScore,
+      type_name: type.name,
+      dim_perception: dimHealth[0] || 0,
+      dim_goal: dimHealth[1] || 0,
+      dim_create: dimHealth[2] || 0,
+      dim_decision: dimHealth[3] || 0,
+      dim_manage: dimHealth[4] || 0,
+      feedback_text: text
+    }]).then(({error}) => {
+      if(error) console.log('Feedback save error:', error.message);
+    });
+  }
+  if(status){
+    status.textContent = '✅ 感谢你的反馈！这对花花优化产品非常重要 🙌';
+    status.style.color = '#8CB369';
+  }
+  if(textarea) textarea.value = '';
 }
 
 // ═══════════════ VERIFICATION CODE ═══════════════
