@@ -1485,7 +1485,7 @@ function saveToSupabase(totalScore, type, dimHealth, saveData){
     answers_json: JSON.stringify(saveData.answers || {}),
     feedback_text: ''
   };
-  supabase.from('caishang_xinzhi_records').insert([record]).then(({error}) => {
+  supabase.from('caishang_xinzhirecords').insert([record]).then(({error}) => {
     if(error) console.log('Supabase save error:', error.message);
   });
 }
@@ -1510,7 +1510,7 @@ function submitFeedback(){
     const totalScore = getTotalScore();
     const type = getType();
     const dimHealth = DIMENSIONS.map((_,i)=>getDimHealth(i));
-    supabase.from('caishang_xinzhi_records').insert([{
+    supabase.from('caishang_xinzhirecords').insert([{
       created_at: new Date().toISOString(),
       total_score: totalScore,
       type_name: type.name,
